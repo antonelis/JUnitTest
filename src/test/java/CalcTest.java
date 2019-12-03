@@ -1,5 +1,6 @@
-
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +61,7 @@ class CalcTest {
         void testNegativeSubtraction() {
             assertEquals(-5, calc.subtraction(-3, 2), "should subtract one negative number");
         }
+
         @Test
         @DisplayName("When Subtracting With Two Negative Numbers")
         void testTwoNegativeSubtraction() {
@@ -86,11 +88,18 @@ class CalcTest {
     @DisplayName("Testing Arrays Size")
     void testArraysSize(TestInfo testInfo) {
         int[] numArray = {2, 4, 6, 8, 10};
-        assertEquals(5, calc.calcArraySize(numArray),"should calc arrays length");
+        assertEquals(5, calc.calcArraySize(numArray), "should calc arrays length");
         assertDoesNotThrow(
                 () -> calc.calcArraySize(numArray)
         );
         System.out.println(testInfo.getDisplayName());
+    }
+
+    @Order(7)
+    @ParameterizedTest
+    @ValueSource(ints = {23, 43, 15, -43, 75, Integer.MAX_VALUE})
+    void isOdd_ShouldReturnTrueForOddNumbers(int number) {
+        assertTrue(calc.isOdd(number));
     }
 
     @BeforeEach

@@ -5,7 +5,7 @@ public class Calc {
     }
 
     public int subtraction(int a, int b) {
-    return a - b;
+        return a - b;
     }
 
     public int multiply(int a, int b) {
@@ -18,12 +18,17 @@ public class Calc {
         }
         return a / b;
     }
+
     private int arraySize(int[] numbers) {
         return numbers.length;
     }
 
     public int calcArraySize(int[] numbers) {
         return arraySize(numbers);
+    }
+
+    public boolean isOdd(int number) {
+        return number % 2 != 0;
     }
 
 }
