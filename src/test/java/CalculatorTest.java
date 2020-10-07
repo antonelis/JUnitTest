@@ -4,10 +4,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalcTest {
+class CalculatorTest {
 
-    private Calc calc;
+    private Calculator calculator;
 
+    @BeforeEach
+    void init() {
+        calculator = new Calculator();
+    }
+
+    @AfterEach
+    void cleanup() {
+        calculator = null;
+    }
 
     @Test
     @Order(1)
@@ -15,7 +24,7 @@ class CalcTest {
     @DisplayName("Testing Add Method With Positive Numbers")
     void testPositiveAdd() {
         int expected = 2;
-        int actual = calc.add(1, 1);
+        int actual = calculator.add(1, 1);
         assertEquals(expected, actual, "should add two positive numbers");
     }
 
@@ -25,7 +34,7 @@ class CalcTest {
     @DisplayName("Testing Add Method With Negative Numbers")
     void testNegativeAdd() {
         int expected = -2;
-        int actual = calc.add(-1, -1);
+        int actual = calculator.add(-1, -1);
         assertEquals(expected, actual, "should add two negative numbers");
     }
 
@@ -34,7 +43,7 @@ class CalcTest {
     @Tag("Math")
     @DisplayName("Testing Divide Method")
     void testDivideWithZero() {
-        assertThrows(ArithmeticException.class, () -> calc.divide(1, 0), "Divide with zero should throw an exception");
+        assertThrows(ArithmeticException.class, () -> calculator.divide(1, 0), "Divide with zero should throw an exception");
     }
 
     @Test
@@ -42,7 +51,7 @@ class CalcTest {
     @Tag("Math")
     @DisplayName("Testing Divide Method")
     void testDivide() {
-        assertEquals(2, calc.subtraction(4, 2), "should divide two positive numbers");
+        assertEquals(2, calculator.subtraction(4, 2), "should divide two positive numbers");
     }
 
     @Nested
@@ -53,19 +62,19 @@ class CalcTest {
         @Test
         @DisplayName("When Subtracting With Positive Numbers")
         void testPositiveSubtraction() {
-            assertEquals(2, calc.subtraction(4, 2), "should subtract two positive numbers");
+            assertEquals(2, calculator.subtraction(4, 2), "should subtract two positive numbers");
         }
 
         @Test
         @DisplayName("When Subtracting With Negative Number")
         void testNegativeSubtraction() {
-            assertEquals(-5, calc.subtraction(-3, 2), "should subtract one negative number");
+            assertEquals(-5, calculator.subtraction(-3, 2), "should subtract one negative number");
         }
 
         @Test
         @DisplayName("When Subtracting With Two Negative Numbers")
         void testTwoNegativeSubtraction() {
-            assertEquals(-1, calc.subtraction(-3, -2), "should subtract two negative numbers");
+            assertEquals(-1, calculator.subtraction(-3, -2), "should subtract two negative numbers");
         }
 
     }
@@ -76,10 +85,10 @@ class CalcTest {
     @DisplayName("Testing Multiply Method")
     void testMultiply() {
         assertAll(
-                () -> assertEquals(4, calc.multiply(2, 2), "should multiply two positive numbers"),
-                () -> assertEquals(0, calc.multiply(5, 0), "should multiply with zero"),
-                () -> assertEquals(-2, calc.multiply(-2, 1), "should multiply with negative number"),
-                () -> assertEquals(10, calc.multiply(-2, -5), "should multiply with two negative numbers")
+                () -> assertEquals(4, calculator.multiply(2, 2), "should multiply two positive numbers"),
+                () -> assertEquals(0, calculator.multiply(5, 0), "should multiply with zero"),
+                () -> assertEquals(-2, calculator.multiply(-2, 1), "should multiply with negative number"),
+                () -> assertEquals(10, calculator.multiply(-2, -5), "should multiply with two negative numbers")
         );
     }
 
@@ -88,9 +97,9 @@ class CalcTest {
     @DisplayName("Testing Arrays Size")
     void testArraysSize(TestInfo testInfo) {
         int[] numArray = {2, 4, 6, 8, 10};
-        assertEquals(5, calc.calcArraySize(numArray), "should calc arrays length");
+        assertEquals(5, calculator.calcArraySize(numArray), "should calc arrays length");
         assertDoesNotThrow(
-                () -> calc.calcArraySize(numArray)
+                () -> calculator.calcArraySize(numArray)
         );
         System.out.println(testInfo.getDisplayName());
     }
@@ -99,16 +108,7 @@ class CalcTest {
     @ParameterizedTest
     @ValueSource(ints = {23, 43, 15, -43, 75, Integer.MAX_VALUE})
     void isOdd_ShouldReturnTrueForOddNumbers(int number) {
-        assertTrue(calc.isOdd(number));
+        assertTrue(calculator.isOdd(number));
     }
 
-    @BeforeEach
-    void init() {
-        calc = new Calc();
-    }
-
-    @AfterEach
-    void cleanup() {
-        calc = null;
-    }
 }
