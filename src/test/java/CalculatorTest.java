@@ -51,7 +51,7 @@ class CalculatorTest {
     @Tag("Math")
     @DisplayName("Testing Divide Method")
     void testDivide() {
-        assertEquals(2, calculator.subtraction(4, 2), "should divide two positive numbers");
+        assertEquals(2, calculator.divide(4, 2), "should divide two positive numbers");
     }
 
     @Nested
