@@ -16,15 +16,15 @@ public class Triangle {
     public Triangle(Point a, Point b, Point c) {
         sides = new double[3];
         sides[0] = Math.sqrt(Math.pow((double) (b.x - a.x), 2.0) + Math.pow((double) (b.y - a.y), 2.0));
-        sides[1] = Math.sqrt(Math.pow((double) (b.x - c.x), 2.0) + Math.pow((double) (b.x - a.x), 2.0));
-        sides[2] = Math.sqrt(Math.pow((double) (c.x - a.x), 2.0) + Math.pow((double) (c.x - a.x), 2.0));
+        sides[1] = Math.sqrt(Math.pow((double) (c.x - b.x), 2.0) + Math.pow((double) (c.y - b.y), 2.0));
+        sides[2] = Math.sqrt(Math.pow((double) (a.x - c.x), 2.0) + Math.pow((double) (a.y - c.y), 2.0));
     }
 
     public Triangle(Point[] s) {
         sides = new double[s.length];
         sides[0] = Math.sqrt(Math.pow((double) (s[1].x - s[0].x), 2.0) + Math.pow((double) (s[1].y - s[0].y), 2.0));
-        sides[1] = Math.sqrt(Math.pow((double) (s[1].x - s[2].x), 2.0) + Math.pow((double) (s[1].x - s[2].x), 2.0));
-        sides[2] = Math.sqrt(Math.pow((double) (s[2].x - s[0].x), 2.0) + Math.pow((double) (s[2].x - s[0].x), 2.0));
+        sides[1] = Math.sqrt(Math.pow((double) (s[2].x - s[1].x), 2.0) + Math.pow((double) (s[2].y - s[1].y), 2.0));
+        sides[2] = Math.sqrt(Math.pow((double) (s[0].x - s[2].x), 2.0) + Math.pow((double) (s[0].y - s[2].y), 2.0));
     }
 
     private int uniqueSides() {
@@ -46,14 +46,14 @@ public class Triangle {
     }
 
     public boolean isScalene() {
-        if (uniqueSides() == 1) {
+        if (uniqueSides() == 3) {
             return true;
         }
         return false;
     }
 
     public boolean isEquilateral() {
-        if (uniqueSides() == 3) {
+        if (uniqueSides() == 1) {
             return true;
         }
         return false;
