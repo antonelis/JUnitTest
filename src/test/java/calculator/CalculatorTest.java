@@ -1,9 +1,9 @@
-package roman;
+package calculator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.provider.ValueSource;
-import roman.Calculator;
+import calculator.Calculator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

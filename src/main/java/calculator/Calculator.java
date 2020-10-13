@@ -1,4 +1,4 @@
-package roman;
+package calculator;
 
 public class Calculator {
 
