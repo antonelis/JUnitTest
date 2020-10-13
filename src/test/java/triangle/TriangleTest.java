@@ -27,19 +27,41 @@ class TriangleTest {
         boolean scalene = equilateralTriangle.isEquilateral();
         assertTrue(scalene);
     }
+
     @Test
     void notEquilateral() {
         boolean scalene = equilateralTriangle.isScalene();
         assertFalse(scalene);
     }
+
     @Test
     void notIsoscelesTriangle() {
         boolean scalene = isoscelesTriangle.isEquilateral();
         assertFalse(scalene);
     }
+
     @Test
     void notScalene() {
         boolean scalene = scaleneTriangle.isIsosceles();
         assertFalse(scalene);
+    }
+
+    @Test
+    void constructorWithPointArgumentsCreatesTriangleWithSidesOfRightLength() {
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(1, 4);
+        Point p3 = new Point(5, 1);
+        double[] sides = {3.0, 5.0, 4.0};
+
+        Triangle triangle = new Triangle(p1, p2, p3);
+        assertArrayEquals(sides, triangle.sides);
+    }
+
+    @Test
+    void constructorWithLengthArray() {
+        double[] sides = {3.0, 5.0, 4.0};
+
+        Triangle triangle = new Triangle(sides);
+        assertArrayEquals(sides, triangle.sides);
     }
 }
