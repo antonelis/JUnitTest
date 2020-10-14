@@ -1,5 +1,8 @@
 package triangle;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Triangle {
 
     double[] sides;
@@ -25,7 +28,10 @@ public class Triangle {
     }
 
     private int uniqueSides() {
-        int distinctIntegers = 0;
+
+       return (int) Arrays.stream(sides).distinct().count();
+        
+       /* int distinctIntegers = 0;
 
         for (int j = 0; j < sides.length; j++) {
             double thisInt = sides[j];
@@ -40,6 +46,7 @@ public class Triangle {
             }
         }
         return distinctIntegers;
+        */
     }
 
     public boolean isScalene() {
