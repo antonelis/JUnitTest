@@ -4,11 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoiceDao {
+public class H2MemInvoicesDao implements InvoicesDao {
 
     private static Connection c;
 
-    public InvoiceDao() {
+    public H2MemInvoicesDao() {
         try {
             if(c!=null) return;
 
