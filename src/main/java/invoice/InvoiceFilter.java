@@ -11,11 +11,10 @@ public class InvoiceFilter {
         this.invoicesDao = invoicesDao;
     }
 
-
     public List<Invoice> filter() {
         //Must be modified to use dependency inversion
-        H2MemInvoicesDao h2MemInvoicesDao = new H2MemInvoicesDao();
-        List<Invoice> allInvoices = h2MemInvoicesDao.all();
+
+        List<Invoice> allInvoices = invoicesDao.all();
 
         return allInvoices.stream()
                 .filter(invoice -> invoice.getValue() < 100.0)
