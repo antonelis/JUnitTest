@@ -10,7 +10,7 @@ public class WhenUsingAStub {
 
     @Test
     public void we_want_to_control_the_returned_value_to_make_the_system_under_test_accept_the_login_attempt() {
-        System system = new System(acceptingAuthoriser());
+        System system = new System(acceptingAuthorizer());
 
         system.login("bob", "SecretPassword");
 
@@ -19,18 +19,18 @@ public class WhenUsingAStub {
 
     @Test
     public void we_want_to_control_the_returned_value_to_make_the_system_under_test_reject_the_login_attempt() {
-        System system = new System(rejectingAuthoriser());
+        System system = new System(rejectingAuthorizer());
 
         system.login("bob", "SecretPassword");
 
         assertThat(system.numberOfActiveUsers()).isEqualTo(0);
     }
 
-    private Authorizer acceptingAuthoriser() {
+    private Authorizer acceptingAuthorizer() {
         return (username, password) -> true;
     }
 
-    private Authorizer rejectingAuthoriser() {
+    private Authorizer rejectingAuthorizer() {
         return (username, password) -> false;
     }
 }
