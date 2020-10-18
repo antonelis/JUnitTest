@@ -1,6 +1,5 @@
 package testdoubles.mockito;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import testdoubles.Authorizer;
 import testdoubles.System;
@@ -14,7 +13,6 @@ import static org.mockito.Mockito.when;
 public class WhenUsingADummy {
 
     @Test
-    @Disabled("Implement me, please ...")
     public void we_do_not_worry_about_the_value_it_returns_because_we_know_it_will_never_be_used() {
         var mock = mock(Authorizer.class);
         System system = new testdoubles.System(mock);
