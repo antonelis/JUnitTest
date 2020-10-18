@@ -1,5 +1,5 @@
 package testdoubles;
 
-public interface Authoriser {
+public interface Authorizer {
     Boolean authorise(String username, String password);
 }

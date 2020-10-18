@@ -2,15 +2,15 @@ package testdoubles;
 
 public class System {
 
-    private Authoriser authoriser;
+    private Authorizer authorizer;
     private int activeUsers = 0;
 
-    public System(Authoriser authoriser) {
-        this.authoriser = authoriser;
+    public System(Authorizer authorizer) {
+        this.authorizer = authorizer;
     }
 
     public void login(String username, String password) {
-        if (authoriser.authorise(username, password)) {
+        if (authorizer.authorise(username, password)) {
             ++activeUsers;
         }
     }
