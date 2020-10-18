@@ -2,6 +2,7 @@ package invoice;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InvoiceFilterTest {
@@ -22,5 +23,17 @@ class InvoiceFilterTest {
         InvoiceFilter invoiceFilter = new InvoiceFilter(invoicesDaoMock);
         invoiceFilter.filter();
         Mockito.verify(invoicesDaoMock).all();
+    }
+
+    @Test
+    public void testFilterUsingMockedStubOfAll() {
+        var invoicesDaoMock = Mockito.mock(InvoicesDao.class);
+        var list = new ArrayList<Invoice>();
+        list.add(new Invoice("Test", 99.0));
+        Mockito.when(invoicesDaoMock.all()).thenReturn(list);
+
+        InvoiceFilter invoiceFilter = new InvoiceFilter(invoicesDaoMock);
+        var result = invoiceFilter.filter();
+        assertEquals(list, result);
     }
 }
