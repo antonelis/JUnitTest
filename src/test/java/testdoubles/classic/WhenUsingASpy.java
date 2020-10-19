@@ -5,7 +5,6 @@ import testdoubles.Authorizer;
 import testdoubles.System;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WhenUsingASpy {
 
